@@ -1,66 +1,74 @@
+import { useState } from "react";
 import "./App.css";
 import Button from "./komponenter/button/button";
 import Card from "./komponenter/Card/Card";
-import Counter from "./komponenter/click/click";
-import { ThemeButton, ThemeProvider } from "./komponenter/dark/dark";
-import List from "./komponenter/list/list";
-import ButtonNew from "./komponenter/Newbutton/button";
-import Search from "./komponenter/search/search";
-import Status from "./komponenter/status/status";
-import Switch from "./komponenter/switch/switch";
-import User from "./komponenter/user/user";
-import CartPrice from "./komponenter/userList/produkt";
-import ActiveUsers from "./komponenter/userList/userActivity";
-import UserList from "./komponenter/userList/userList";
-import Toggle from "./toggle/toggle";
-import NewProfile from "./övning/NewProfile";
-import TextUpdater from "./övning/TextUpdater";
+import Modal from "./komponenter/modal/modal";
+import RadioGroup from "./komponenter/button/radiobutton";
+import Checkbox from "./komponenter/button/checkbox";
+import Navbar from "./komponenter/Nav/navbar";
+import DarkModeSwitch from "./komponenter/dark/dark";
+import ContactForm from "./komponenter/contact/contactform";
+import Snackbar from "./komponenter/snackbar/snackbar";
+import Slider from "./komponenter/slider/sliders";
+import Alert from "./komponenter/alert/alert";
+import ToolTip from "./komponenter/tool/tool";
+import Accordion from "./komponenter/Accordion/Accordion";
+import ProgressBar from "./komponenter/slider/progressbar";
+import TodoList from "./komponenter/list/todoList";
+import InputDemo from "./komponenter/controlledComp/controlledList";
+import CurrentYear from "./komponenter/currentYear/currentYear";
+import Footer from "./komponenter/currentYear/currentYear";
+import AnimalList from "./komponenter/list/addList";
 
 function App() {
+  const [selected, setSelected] = useState("option1");
+  const [checked, setChecked] = useState(false);
+
   return (
-    <ThemeProvider>
-      <section className="app bg-gray-100 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-gray-100">
-        <section className="container mx-auto p-4">
-          <ThemeButton />
-          <section className="my-4">
-            <Button label="Click me" />
-          </section>
-          <section className="my-4">
-            <Card title="Card Title">Card Content</Card>
-          </section>
-          <section className="my-4">
-            <Toggle />
-          </section>
-          <section className="my-4">
-            <Status isOnline={true} />
-            <Status isOnline={false} />
-          </section>
-          <section className="my-4">
-            <List items={["item1", "item2", "item3"]} />
-          </section>
-          <section className="my-4">
-            <Search />
-          </section>
-          <section className="my-4">
-            <Counter />
-          </section>
-          <section className="my-4">
-            <User />
-          </section>
-          <section className="my-4">
-            <Switch />
-          </section>
-          <div className="my-4">
-            <ButtonNew text="klicka här" color="red" />
-            <ButtonNew text="Du har klickat!" color="blue" />
-            <UserList />
-            <CartPrice />
-          </div>
-          <TextUpdater/>
-          <NewProfile />
-        </section>
-      </section>
-    </ThemeProvider>
+    <>
+      <Navbar />
+      <DarkModeSwitch />
+      <Button variant="contained" color="primary">
+        Klicka här
+      </Button>
+      <Button variant="outlined" color="secondary">
+        Avbryt
+      </Button>
+      <Card title="Mitt kort">
+        <p>Detta är innehållet i kortet.</p>
+      </Card>
+      <Modal title="Viktig info">
+        <p>Detta är en anpassad modal!</p>
+      </Modal>
+      <RadioGroup
+        name="example"
+        options={[
+          { label: "Alternativ 1", value: "option1" },
+          { label: "Alternativ 2", value: "option2" },
+        ]}
+        selectedValue={selected}
+        onChange={setSelected}
+      />
+      <Checkbox
+        label="Godkänn villkor"
+        checked={checked}
+        onChange={setChecked}
+      />
+      <ContactForm />
+      <Snackbar />
+      <Slider />
+      <Alert message="This is a success alert!" type="success" />{" "}
+      <ToolTip text="Hej">
+        <span>Hover over me</span>
+      </ToolTip>
+      <Accordion />
+      <div className="mt-5"></div>
+      <ProgressBar progress={70} />
+      <TodoList />
+      <InputDemo />
+      <AnimalList />
+      <Footer company="EmilDev"/>
+    </>
   );
 }
 

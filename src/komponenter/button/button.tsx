@@ -1,14 +1,37 @@
-type ButtonProps = {
-  label: string;
-};
+import React from "react";
 
-const Button = ({ label }: ButtonProps) => {
+interface ButtonProps {
+  variant?: "contained" | "outlined" | "text";
+  color?: "primary" | "secondary";
+  onClick?: () => void;
+  children: React.ReactNode;
+}
+
+const Button: React.FC<ButtonProps> = ({
+  variant = "contained",
+  color = "primary",
+  onClick,
+  children,
+}) => {
+  const baseStyles = "px-4 py-2 rounded font-medium transition duration-300";
+  const colors = {
+    primary: "bg-blue-500 text-white hover:bg-blue-600",
+    secondary: "bg-gray-500 text-white hover:bg-gray-600",
+  };
+  const outlined = "border-2 border-current text-black hover:bg-gray-100";
+  const text = "bg-transparent text-blue-500 hover:underline";
+
+  const classes =
+    variant === "outlined"
+      ? `${baseStyles} ${outlined}`
+      : variant === "text"
+        ? `${baseStyles} ${text}`
+        : `${baseStyles} ${colors[color]}`;
+
   return (
-    <section className="flex justify-center items-center">
-      <button className="btn bg-red-400 border-b-white rounded-sm p-1.5">
-        {label}
-      </button>
-    </section>
+    <button className={classes} onClick={onClick}>
+      {children}
+    </button>
   );
 };
 

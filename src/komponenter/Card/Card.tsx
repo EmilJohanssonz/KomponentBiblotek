@@ -1,16 +1,16 @@
-type CardProps = {
+import React from "react";
+
+interface CardProps {
   title: string;
   children: React.ReactNode;
-};
+}
 
-const Card = ({ title, children }: CardProps) => {
+const Card: React.FC<CardProps> = ({ title, children }) => {
   return (
-    <section className="card bg-amber-300 flex justify-center h-14 p-3 border-solid border-2 cursor-pointer rounded-lg drop-shadow-lg mt-1">
-      <h2 className="text-red-600">Hej {title}</h2>
-      <p className="text-2xl text-blue-800 font-bold font-mono pl-2">
-        PÅ dig {children}
-      </p>
-    </section>
+    <div className="border rounded-lg p-4 shadow-md bg-white dark:bg-gray-800">
+      <h3 className="text-lg font-semibold mb-2">{title}</h3>
+      <div className="text-gray-700 dark:text-gray-300">{children}</div>
+    </div>
   );
 };
 
