@@ -1,2 +1,2 @@
-# KomponentBiblotek
+# Component Library React
 
