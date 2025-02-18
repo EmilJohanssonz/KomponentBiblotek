@@ -4,7 +4,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ company }) => {
   return (
-    <footer className="text-center p-4 text-gray-600 dark:text-gray-300">
+    <footer className="mt-5 text-center p-4 text-gray-600 dark:text-gray-3">
       © {new Date().getFullYear()} {company}. All rights reserved.
     </footer>
   );
